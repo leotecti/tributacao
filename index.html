@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Assistente Tributário Simplificado</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+<h2>Assistente Tributário Simplificado</h2>
+
+<!-- ETAPAS -->
+<div class="step active">
+<h3>1. Regime</h3>
+<select id="regime">
+<option value="simples">Simples Nacional</option>
+<option value="presumido">Lucro Presumido</option>
+<option value="real">Lucro Real</option>
+</select>
+<button onclick="nextStep()">Próximo</button>
+</div>
+
+<div class="step">
+<h3>2. Operação</h3>
+<select id="tipo">
+<option value="venda">Venda</option>
+<option value="devolucao">Devolução</option>
+</select>
+<button onclick="prevStep()">Voltar</button>
+<button onclick="nextStep()">Próximo</button>
+</div>
+
+<div class="step">
+<h3>3. ICMS / ST</h3>
+<select id="temICMS">
+<option value="sim">Tributado</option>
+<option value="isento">Isento</option>
+<option value="nao">Não tributado</option>
+</select>
+<select id="temST">
+<option value="nao">Sem ST</option>
+<option value="sim">Com ST</option>
+</select>
+<button onclick="prevStep()">Voltar</button>
+<button onclick="nextStep()">Próximo</button>
+</div>
+
+<div class="step">
+<h3>4. PIS/COFINS</h3>
+<select id="pis">
+<option value="normal">Tributado</option>
+<option value="monofasico">Monofásico</option>
+<option value="isento">Isento</option>
+</select>
+<button onclick="prevStep()">Voltar</button>
+<button onclick="nextStep()">Finalizar</button>
+</div>
+
+<div class="step">
+<div class="result-header">
+<h3>Resultado Tributário</h3>
+<div class="result-actions">
+<button type="button" onclick="baixarJSON()">Gerar JSON</button>
+<button type="button" onclick="exportarPlanilha()">Exportar planilha</button>
+</div>
+</div>
+<div id="alerta" class="alert"></div>
+
+<div class="result-box">
+<h4>Contribuinte – Dentro do estado</h4>
+<div id="res_contrib_interna"></div>
+</div>
+
+<div class="result-box">
+<h4>Contribuinte – Fora do estado</h4>
+<div id="res_contrib_externa"></div>
+</div>
+
+<div class="result-box">
+<h4>Não Contribuinte – Dentro do estado</h4>
+<div id="res_nao_interna"></div>
+</div>
+
+<div class="result-box">
+<h4>Não Contribuinte – Fora do estado</h4>
+<div id="res_nao_externa"></div>
+</div>
+
+<button onclick="prevStep()">Voltar</button>
+</div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
